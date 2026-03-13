@@ -1,0 +1,121 @@
+{
+  "name": "openshift-ai-roks-da",
+  "version": "1.0.0",
+  "description": "Deployable Architecture for OpenShift AI on Red Hat OpenShift on IBM Cloud (ROKS)",
+  "long_description": "This Deployable Architecture provisions a complete OpenShift AI environment on IBM Cloud, including VPC infrastructure, Red Hat OpenShift cluster, OpenShift Data Foundation for storage, and OpenShift AI with all necessary components for AI/ML workloads.",
+  "offering_docs_url": "https://github.com/your-org/openshift-ai-roks-da/blob/main/README.md",
+  "offering_icon_url": "https://raw.githubusercontent.com/your-org/openshift-ai-roks-da/main/images/icon.svg",
+  "provider_name": "IBM",
+  "features": [
+    {
+      "title": "VPC Infrastructure",
+      "description": "Multi-zone VPC with subnets, security groups, and public gateways"
+    },
+    {
+      "title": "Red Hat OpenShift",
+      "description": "Managed OpenShift cluster with configurable worker pools"
+    },
+    {
+      "title": "OpenShift Data Foundation",
+      "description": "Persistent storage with block, file, and object storage classes"
+    },
+    {
+      "title": "OpenShift AI",
+      "description": "Complete AI/ML platform with notebooks, pipelines, and model serving"
+    },
+    {
+      "title": "High Availability",
+      "description": "Multi-zone deployment for production workloads"
+    },
+    {
+      "title": "Observability",
+      "description": "Optional integration with IBM Cloud Monitoring and Logging"
+    }
+  ],
+  "flavors": [
+    {
+      "label": "Standard",
+      "name": "standard",
+      "working_directory": ".",
+      "architecture": {
+        "descriptions": "Standard deployment with VPC, ROKS, ODF, and OpenShift AI",
+        "features": [
+          {
+            "title": "VPC with 3 zones",
+            "description": "Multi-zone VPC infrastructure"
+          },
+          {
+            "title": "ROKS Cluster",
+            "description": "OpenShift 4.15 with 2 workers per zone"
+          },
+          {
+            "title": "OpenShift Data Foundation",
+            "description": "Medium size (2TiB) storage cluster"
+          },
+          {
+            "title": "OpenShift AI",
+            "description": "Full AI/ML platform with all components"
+          }
+        ],
+        "diagrams": [
+          {
+            "diagram": {
+              "caption": "OpenShift AI on ROKS Architecture",
+              "url": "https://raw.githubusercontent.com/your-org/openshift-ai-roks-da/main/images/architecture.svg",
+              "type": "image/svg+xml"
+            },
+            "description": "Architecture diagram showing VPC, ROKS cluster, ODF storage, and OpenShift AI components"
+          }
+        ]
+      }
+    }
+  ],
+  "install_type": "fullstack",
+  "iam_permissions": [
+    {
+      "role_crns": [
+        "crn:v1:bluemix:public:iam::::role:Administrator"
+      ],
+      "service_name": "is.vpc"
+    },
+    {
+      "role_crns": [
+        "crn:v1:bluemix:public:iam::::role:Administrator"
+      ],
+      "service_name": "containers-kubernetes"
+    }
+  ],
+  "dependencies": [
+    {
+      "flavors": [
+        "standard"
+      ],
+      "id": "terraform-ibm-modules/vpc/ibm",
+      "name": "IBM VPC",
+      "version": ">=1.0.0"
+    }
+  ],
+  "related_links": [
+    {
+      "title": "OpenShift AI Documentation",
+      "url": "https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed"
+    },
+    {
+      "title": "IBM Cloud ROKS Documentation",
+      "url": "https://cloud.ibm.com/docs/openshift"
+    },
+    {
+      "title": "OpenShift Data Foundation",
+      "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation"
+    }
+  ],
+  "compliance": {
+    "authority": "scc-v3",
+    "profiles": [
+      {
+        "profile_name": "IBM Cloud Framework for Financial Services",
+        "profile_version": "1.5.0"
+      }
+    ]
+  }
+}
